@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,7 +18,7 @@ import org.hibernate.annotations.Check;
 
 @Entity
 @Table(name = "pokeuser")
-@Check(constraints = "pokeball > 0")
+@Check(constraints = "pokeball_quantity > 0")
 public class PokeUser {
 	
 	@Id
@@ -35,8 +36,8 @@ public class PokeUser {
 	@Column(name="pokeball_quantity")
 	private Long pokeball;
 	
-	@OneToMany (mappedBy = "user")
-	List<Pokedex> pokedexs = new ArrayList<Pokedex>();
+//	@OneToMany (mappedBy = "user")
+//	List<Pokedex> pokedexs = new ArrayList<Pokedex>();
 
 	public Long getUser_id() {
 		return user_id;
@@ -70,21 +71,21 @@ public class PokeUser {
 		this.pokeball = pokeball;
 	}
 
-	public List<Pokedex> getPokedexs() {
-		return pokedexs;
-	}
+//	public List<Pokedex> getPokedexs() {
+//		return pokedexs;
+//	}
+//
+//	public void setPokedexs(List<Pokedex> pokedexs) {
+//		this.pokedexs = pokedexs;
+//	}
 
-	public void setPokedexs(List<Pokedex> pokedexs) {
-		this.pokedexs = pokedexs;
-	}
-
-	public PokeUser(Long user_id, String user_name, @NotNull String pwd, Long pokeball, List<Pokedex> pokedexs) {
+	public PokeUser(Long user_id, String user_name, @NotNull String pwd, Long pokeball) {
 		super();
 		this.user_id = user_id;
 		this.user_name = user_name;
 		this.pwd = pwd;
 		this.pokeball = pokeball;
-		this.pokedexs = pokedexs;
+		//this.pokedexs = pokedexs;
 	}
 
 	public PokeUser() {
@@ -95,7 +96,7 @@ public class PokeUser {
 	@Override
 	public String toString() {
 		return "PokeUser [user_id=" + user_id + ", user_name=" + user_name + ", pwd=" + pwd + ", pokeball=" + pokeball
-				+ ", pokedexs=" + pokedexs + "]";
+				+ "]";
 	}
 
 	@Override
@@ -103,7 +104,7 @@ public class PokeUser {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((pokeball == null) ? 0 : pokeball.hashCode());
-		result = prime * result + ((pokedexs == null) ? 0 : pokedexs.hashCode());
+		//result = prime * result + ((pokedexs == null) ? 0 : pokedexs.hashCode());
 		result = prime * result + ((pwd == null) ? 0 : pwd.hashCode());
 		result = prime * result + ((user_id == null) ? 0 : user_id.hashCode());
 		result = prime * result + ((user_name == null) ? 0 : user_name.hashCode());
@@ -124,11 +125,11 @@ public class PokeUser {
 				return false;
 		} else if (!pokeball.equals(other.pokeball))
 			return false;
-		if (pokedexs == null) {
-			if (other.pokedexs != null)
-				return false;
-		} else if (!pokedexs.equals(other.pokedexs))
-			return false;
+//		if (pokedexs == null) {
+//			if (other.pokedexs != null)
+//				return false;
+//		} else if (!pokedexs.equals(other.pokedexs))
+//			return false;
 		if (pwd == null) {
 			if (other.pwd != null)
 				return false;

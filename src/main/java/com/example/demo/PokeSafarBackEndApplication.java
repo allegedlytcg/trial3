@@ -13,5 +13,4 @@ public class PokeSafarBackEndApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PokeSafarBackEndApplication.class, args);
 	}
-
 }

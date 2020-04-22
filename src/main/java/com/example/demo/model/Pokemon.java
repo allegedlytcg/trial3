@@ -38,8 +38,8 @@ public class Pokemon {
 	@Column(name="catch_chance")
 	private Long catch_chance;
 	
-	@OneToMany(mappedBy = "pokemon")
-	private List<Pokedex> pokedexs = new ArrayList<Pokedex>();
+//	@OneToMany(mappedBy = "pokemon")
+//	private List<Pokedex> pokedexs = new ArrayList<Pokedex>();
 
 	public Long getPokeminId() {
 		return pokemonId;
@@ -81,13 +81,13 @@ public class Pokemon {
 		this.catch_chance = catch_chance;
 	}
 
-	public List<Pokedex> getPokedexs() {
-		return pokedexs;
-	}
-
-	public void setPokedexs(List<Pokedex> pokedexs) {
-		this.pokedexs = pokedexs;
-	}
+//	public List<Pokedex> getPokedexs() {
+//		return pokedexs;
+//	}
+//
+//	public void setPokedexs(List<Pokedex> pokedexs) {
+//		this.pokedexs = pokedexs;
+//	}
 
 	public Pokemon() {
 		super();
@@ -95,21 +95,20 @@ public class Pokemon {
 	}
 
 	public Pokemon(@NotBlank @NotNull Long pokeminId, String name, String evolve_into, Long encounter_weight,
-			Long catch_chance, List<Pokedex> pokedexs) {
+			Long catch_chance) {
 		super();
 		this.pokemonId = pokeminId;
 		this.name = name;
 		this.evolve_into = evolve_into;
 		this.encounter_weight = encounter_weight;
 		this.catch_chance = catch_chance;
-		this.pokedexs = pokedexs;
+		//this.pokedexs = pokedexs;
 	}
 
 	@Override
 	public String toString() {
 		return "Pokemon [pokeminId=" + pokemonId + ", name=" + name + ", evolve_into=" + evolve_into
-				+ ", encounter_weight=" + encounter_weight + ", catch_chance=" + catch_chance + ", pokedexs=" + pokedexs
-				+ "]";
+				+ ", encounter_weight=" + encounter_weight + ", catch_chance=" + catch_chance + ", pokedexs=" + "]";
 	}
 
 	@Override
@@ -120,7 +119,7 @@ public class Pokemon {
 		result = prime * result + ((encounter_weight == null) ? 0 : encounter_weight.hashCode());
 		result = prime * result + ((evolve_into == null) ? 0 : evolve_into.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((pokedexs == null) ? 0 : pokedexs.hashCode());
+		//result = prime * result + ((pokedexs == null) ? 0 : pokedexs.hashCode());
 		result = prime * result + ((pokemonId == null) ? 0 : pokemonId.hashCode());
 		return result;
 	}
@@ -154,11 +153,11 @@ public class Pokemon {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (pokedexs == null) {
-			if (other.pokedexs != null)
-				return false;
-		} else if (!pokedexs.equals(other.pokedexs))
-			return false;
+//		if (pokedexs == null) {
+//			if (other.pokedexs != null)
+//				return false;
+//		} else if (!pokedexs.equals(other.pokedexs))
+//			return false;
 		if (pokemonId == null) {
 			if (other.pokemonId != null)
 				return false;
@@ -166,9 +165,4 @@ public class Pokemon {
 			return false;
 		return true;
 	}
-	
-	
-	
-	
-	
 }
